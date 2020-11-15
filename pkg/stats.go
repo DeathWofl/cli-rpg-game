@@ -1,4 +1,4 @@
-package pkg
+package Pkg
 
 type Stats struct {
 	HP           uint32

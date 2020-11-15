@@ -3,6 +3,7 @@ package menu
 import (
 	"fmt"
 
+	"github.com/deathwofl/cli-rpg-game/pkg"
 	"github.com/muesli/termenv"
 )
 
@@ -18,21 +19,26 @@ func RunGame() error {
 	fmt.Print("\n")
 	fmt.Println(out)
 
-	// ShowMenu()
+	// options of menu
+	mm := pkg.Menu{
+		Choices: []string{"Kill goblins", "Train", "Work in the field."},
+	}
+
+	ShowMenu(&mm)
 
 	return nil
 }
 
-// func ShowMenu() {
-// 	text := termenv.String("\nYour adventure begins today, what do you decide to do to start?")
-// 	p := termenv.ColorProfile()
+// ShowMenu
+func ShowMenu(mm *pkg.Menu) {
+	text := termenv.String("\nYour adventure begins today, what do you decide to do to start ?")
+	p := termenv.ColorProfile()
 
-// 	text = text.Foreground(p.Color("#9ba4b4"))
-// 	fmt.Println(text)
+	text = text.Foreground(p.Color("#9ba4b4"))
+	fmt.Println(text)
 
-// 	var initialModel = models.Menu{
-// 		Choices:  []string{"Kill goblins", "Train", "Work in the field."},
-// 		Selected: make(map[int]struct{}),
-// 	}
+	for index, model := range mm.Choices {
+		fmt.Printf("%v. %s\n", index+1, model)
+	}
 
-// }
+}

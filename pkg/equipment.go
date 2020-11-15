@@ -1,4 +1,4 @@
-package pkg
+package Pkg
 
 type Equipment struct {
 	Head      Item
