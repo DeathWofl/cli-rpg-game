@@ -1,4 +1,4 @@
-package Pkg
+package pkg
 
 type Item struct {
 	Name string

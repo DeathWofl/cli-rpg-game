@@ -1,21 +1,23 @@
-package Pkg
+package pkg
 
 // Character describe fields
 type Character struct {
-	Name  string
-	Money uint64
-	Stat  Stats
+	Name      string
+	Money     uint64
+	Stat      Stats
+	Inventory map[int]Item
 }
 
 // CharacterService actions for character
-type CharacterService interface {
+type CharacterRepository interface {
 	NewCharacter() *Character
-	Cultivate() (Character, error)
+	Cultivate(*Character) error
+	Money(*Character) (*Character, error)
 }
 
 // NewCharacter create max character
-func NewCharacter() *Character {
-	return &Character{
+func NewCharacter() Character {
+	return Character{
 		Name:  "Max",
 		Money: 0,
 		Stat: Stats{

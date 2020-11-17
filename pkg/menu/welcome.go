@@ -2,8 +2,10 @@ package menu
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/deathwofl/cli-rpg-game/pkg"
+	"github.com/deathwofl/cli-rpg-game/pkg/action"
 	"github.com/muesli/termenv"
 )
 
@@ -19,19 +21,24 @@ func RunGame() error {
 	fmt.Print("\n")
 	fmt.Println(out)
 
+	fmt.Println("Your adventure begins today,")
+
 	// options of menu
 	mm := pkg.Menu{
-		Choices: []string{"Kill goblins", "Train", "Work in the field."},
+		Choices: []string{"Kill goblins", "Train", "Work in the field.", "Exit"},
 	}
 
-	ShowMenu(&mm)
+	prota := pkg.NewCharacter()
+
+	ShowMenu(&mm, &prota)
 
 	return nil
 }
 
 // ShowMenu
-func ShowMenu(mm *pkg.Menu) {
-	text := termenv.String("\nYour adventure begins today, what do you decide to do to start ?")
+func ShowMenu(mm *pkg.Menu, chr *pkg.Character) {
+
+	text := termenv.String("\nwhat do you decide to do to start ?")
 	p := termenv.ColorProfile()
 
 	text = text.Foreground(p.Color("#9ba4b4"))
@@ -39,6 +46,26 @@ func ShowMenu(mm *pkg.Menu) {
 
 	for index, model := range mm.Choices {
 		fmt.Printf("%v. %s\n", index+1, model)
+	}
+
+	var option string
+	fmt.Scanln(&option)
+
+	// clean console or terminal
+	// fmt.Println("\033[2J")
+	// cmd := exec.Command("cmd", "/c", "cls")
+	// cmd.Stdout = os.Stdout
+	// cmd.Run()
+
+	switch option {
+	case "3":
+		action.Cultivate(chr)
+		ShowMenu(mm, chr)
+
+	case "4":
+		os.Exit(1)
+	default:
+		fmt.Println("Select correct option.")
 	}
 
 }

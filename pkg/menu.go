@@ -1,4 +1,4 @@
-package Pkg
+package pkg
 
 type Menu struct {
 	Choices  []string         // items on the to-do list
