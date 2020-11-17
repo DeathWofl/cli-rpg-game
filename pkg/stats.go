@@ -1,8 +1,8 @@
 package pkg
 
 type Stats struct {
-	HP           uint32
-	MP           uint32
+	HP           float32
+	MP           float32
 	Vitality     uint16
 	Strength     uint16
 	Speed        uint16

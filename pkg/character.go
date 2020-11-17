@@ -2,9 +2,9 @@ package pkg
 
 // Character describe fields
 type Character struct {
-	Name      string
-	Money     uint64
-	Stat      Stats
+	Name  string
+	Money uint64
+	Stats
 	Inventory map[int]Item
 }
 
@@ -20,7 +20,7 @@ func NewCharacter() Character {
 	return Character{
 		Name:  "Max",
 		Money: 0,
-		Stat: Stats{
+		Stats: Stats{
 			HP:           100,
 			MP:           60,
 			Vitality:     10,

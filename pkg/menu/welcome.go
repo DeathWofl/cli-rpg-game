@@ -58,10 +58,15 @@ func ShowMenu(mm *pkg.Menu, chr *pkg.Character) {
 	// cmd.Run()
 
 	switch option {
+	case "1":
+		action.KillGoblins(chr)
+		ShowMenu(mm, chr)
+	case "2":
+		action.HitTheDummy(chr)
+		ShowMenu(mm, chr)
 	case "3":
 		action.Cultivate(chr)
 		ShowMenu(mm, chr)
-
 	case "4":
 		os.Exit(1)
 	default:
